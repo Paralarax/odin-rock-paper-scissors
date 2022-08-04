@@ -55,18 +55,15 @@ function WinLose(choice) {
     computerChoice = ComputerChoice();
 
     if (playerChoice == computerChoice) {
-        console.log("It's a tie!");
         info[0].textContent = "It's a tie!";
     }
     else if (playerChoice == "rock") {
         if (computerChoice == "scissors") {
-            console.log("You win!");
             playerScore++;
             info[0].textContent = "You win!";
             info[1].textContent = "Rock beats scissors!";
         }
         else {
-            console.log("You lose!");
             computerScore++;
             info[0].textContent = "You lose!";
             info[1].textContent = "Paper beats rock!";
@@ -74,13 +71,11 @@ function WinLose(choice) {
     }
     else if (playerChoice == "paper") {
         if (computerChoice == "rock") {
-            console.log("You win!");
             playerScore++;
             info[0].textContent = "You win!";
             info[1].textContent = "Paper beats rock!";
         }
         else {
-            console.log("You lose!");
             computerScore++;
             info[0].textContent = "You lose!";
             info[1].textContent = "Scissors beats paper!";
@@ -88,13 +83,11 @@ function WinLose(choice) {
     }
     else if (playerChoice == "scissors") {
         if (computerChoice == "paper") {
-            console.log("You win!");
             playerScore++;
             info[0].textContent = "You win!";
             info[1].textContent = "Scissors beats paper!";
         }
         else {
-            console.log("You lose!");
             computerScore++;
             info[0].textContent = "You lose!";
             info[1].textContent = "Rock beats scissors!";
@@ -106,15 +99,12 @@ function WinLose(choice) {
 
     if (counter === 5) {
         if (playerScore === computerScore) {
-            console.log("Endgame: It's a tie");
             info[0].textContent = "GAME OVER, It's a tie";
         }
         else if (playerScore > computerScore) {
-            console.log("Endgame: Player wins!");
             info[0].textContent = "GAME OVER, You win!";
         }
         else {
-            console.log("Endgame: Computer wins!");
             info[0].textContent = "GAME OVER, You lose!";
         }
 
