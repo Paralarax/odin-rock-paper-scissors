@@ -43,56 +43,12 @@ function ComputerChoice() {
     else {
         choice = "scissors";
     }
-    console.log(choice);
     return choice
 }
 
-function WinLose(choice) {
+function updateScore() {
 
     counter++;
-
-    playerChoice = choice;
-    computerChoice = ComputerChoice();
-
-    if (playerChoice == computerChoice) {
-        info[0].textContent = "It's a tie!";
-    }
-    else if (playerChoice == "rock") {
-        if (computerChoice == "scissors") {
-            playerScore++;
-            info[0].textContent = "You win!";
-            info[1].textContent = "Rock beats scissors!";
-        }
-        else {
-            computerScore++;
-            info[0].textContent = "You lose!";
-            info[1].textContent = "Paper beats rock!";
-        }
-    }
-    else if (playerChoice == "paper") {
-        if (computerChoice == "rock") {
-            playerScore++;
-            info[0].textContent = "You win!";
-            info[1].textContent = "Paper beats rock!";
-        }
-        else {
-            computerScore++;
-            info[0].textContent = "You lose!";
-            info[1].textContent = "Scissors beats paper!";
-        }
-    }
-    else if (playerChoice == "scissors") {
-        if (computerChoice == "paper") {
-            playerScore++;
-            info[0].textContent = "You win!";
-            info[1].textContent = "Scissors beats paper!";
-        }
-        else {
-            computerScore++;
-            info[0].textContent = "You lose!";
-            info[1].textContent = "Rock beats scissors!";
-        }
-    }
 
     scores[0].textContent = "Player score: " + playerScore.toString();
     scores[1].textContent = "Computer score: " + computerScore.toString();
@@ -112,5 +68,27 @@ function WinLose(choice) {
         playerScore = 0;
         computerScore = 0;
     }
-    
+}
+
+function WinLose(choice) {
+
+    playerChoice = choice;
+    computerChoice = ComputerChoice();
+
+    if (playerChoice === computerChoice) {
+        info[0].textContent = "It's a tie!";
+        info[1].textContent = "";
+    }
+    else if (playerChoice === "rock" && computerChoice === "scissors" || playerChoice === "paper" && computerChoice === "rock" || playerChoice === "scissors" && computerChoice === "paper") {
+        playerScore++;
+        info[0].textContent = "You win!";
+        info[1].textContent = playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1) + " beats " + computerChoice;
+    }
+    else {
+        computerScore++;
+        info[0].textContent = "You lose!";
+        info[1].textContent = computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1) + " beats " + playerChoice;
+    }
+
+    updateScore();
 }
